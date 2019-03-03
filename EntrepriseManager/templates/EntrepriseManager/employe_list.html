@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <meta charset="UTF-8">
+    <title>Liste des employés</title>
+</head>
+<body>
+    {% if employes %}
+        <ul>
+            {% for emp in employes %}
+                <li><a href="{% url 'employe' emp.id %}">{{ emp.nom }}</a> travaille chez <a href="{% url 'entreprise' emp.entreprise.id %}"> {{ emp.entreprise.nom }} </a> </li>
+            {% endfor %}
+        </ul>
+
+    {% else %}
+        <h3>Aucun employé enregistré ! </h3>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Détails de l'entreprise {{ entreprise.nom }}</title>
+</head>
+<body>
+  Cette entreprise a été créée en {{ entreprise.datecreation.year }}
+  {% if entreprise.employes.count %}
+  Elle contient les employes suivants:
+  <ul>
+      {% for emp in entreprise.employes.all %}
+        <li>{{ emp.nom }}</li>
+      {% endfor %}
+  </ul>
+  {% else %}
+      Elle ne contient pas d'employes
+  {%  endif %}
+  <br>
+  <a href="/employe"><button>Retourner aux employes</button></a>
+</body>
+</html>

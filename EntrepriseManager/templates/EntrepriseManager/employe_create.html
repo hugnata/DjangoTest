@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Créer un nouvel employé</title>
+</head>
+<body>
+    <h1>Créer un nouvel employé</h1>
+    {% if errormessage %} <p><strong>{{ errormessage }}</strong></p> {% endif %}
+    <form action="create" method="post">
+    {% csrf_token %}
+        <input type="text" name="nom" id="nom">
+        <select name="entreprise" id="entreprise">
+               {% for e in entreprises %}
+                   <option value="{{ e.id }}">{{ e.nom }}</option>
+               {% endfor %}
+        </select>
+        <input type="submit" value="Créer">
+    </form>
+    <a href=""><button>Retour</button></a>
+</body>
+</html>
